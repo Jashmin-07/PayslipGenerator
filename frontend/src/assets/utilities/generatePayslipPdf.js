@@ -1,14 +1,5 @@
 import jsPDF from "jspdf";
-import { notoSansRegular } from "../fonts/Noto_Sans/static/NotoSans-Regular.ttf";
 
-// import NotoSans from "../fonts/Noto_Sans/static/NotoSans_Condensed-Bold.ttf";
-jsPDF.API.events.push([
-  "addFonts",
-  function () {
-    this.addFileToVFS("NotoSansCondensed-Bold.ttf", notoSansRegular);
-    this.addFont("NotoSansCondensed-Bold.ttf", "notoSansRegular", "normal");
-  },
-]);
 export function generatePayslipPdf({
   form,
   extraFields,
@@ -63,8 +54,7 @@ function _generatePDFInner(
 ) {
   doc.setTextColor(0, 0, 0);
   doc.setFontSize(13);
-  doc.setFont("notoSansRegular", "normal");
-  // doc.setFont("helvetica", "bold");
+  doc.setFont("helvetica", "bold");
   doc.text(form.companyName || "-", 47, 17);
   doc.setFontSize(10);
   doc.setFont("helvetica", "normal");
